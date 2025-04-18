@@ -49,8 +49,8 @@ contract SimpleDEX {
         uint256 amountBOut = getAmountOut(amountAIn, reserveA, reserveB);
         require(amountBOut <= reserveB, "Not enough liquidity");
 
-        tokenA.transferFrom(msg.sender, address(this), amountAIn);
-        tokenB.transfer(msg.sender, amountBOut);
+        tokenA.transferFrom(msg.sender, address(this), amountAIn); // gửi TokenA vào DEX
+        tokenB.transfer(msg.sender, amountBOut); // trả TokenB ra cho người dùng
 
         reserveA += amountAIn;
         reserveB -= amountBOut;

@@ -18,13 +18,13 @@ async function main() {
   const tokenBAddress = await tokenB.getAddress();
   console.log("MyTokenB deployed to:", tokenBAddress);
 
-  // Lưu địa chỉ vào deployed-addresses.json
+  // Lưu địa chỉ vào deployed-address.json
   const deployedAddresses = {
     MyTokenA: tokenAAddress,
     MyTokenB: tokenBAddress,
   };
 
-  const filePath = path.join(__dirname, "..", "deployed-addresses.json");
+  const filePath = path.join(__dirname, "..", "deployed-address.json");
   fs.writeFileSync(filePath, JSON.stringify(deployedAddresses, null, 2));
   console.log(`✅ Địa chỉ contract đã được lưu vào ${filePath}`);
 }

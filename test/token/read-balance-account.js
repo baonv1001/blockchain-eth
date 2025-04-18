@@ -1,4 +1,5 @@
 const addresses = require('../../deployed-address.json');
+const accountAddresses = require('../../wallet-address.json');
 const { ethers } = require("ethers");
 const fs = require("fs");
 const abi = JSON.parse(fs.readFileSync("./artifacts/contracts/MyTokenA.sol/MyTokenA.json")).abi;
@@ -9,9 +10,9 @@ const RPC_URL = "http://127.0.0.1:8545";
 const provider = new ethers.JsonRpcProvider(RPC_URL);
 
 // Địa chỉ người gửi và người nhận
-const sender = "0x04fbeC3Ac166Fea2ce157f74962eFe4C8aFf7891"; // Node 1
-const receiver = "0x444595d3AA12F83Fed8BF7aE7Bc01D2684aD463C"; // Node 2
-const receiver3 = "0x90421361aAeb310843A30d6e6b841a69335CDA4C"; // Node 3
+const sender = accountAddresses.ACCOUNT_1_NODE_1; // Node 1
+const receiver = accountAddresses.ACCOUNT_1_NODE_2; // Node 2
+const receiver3 = accountAddresses.ACCOUNT_1_NODE_3; // Node 3
 
 // Địa chỉ smart contract của token
 const tokenAddressA = addresses.MyTokenA; // "0xf3aE19F2c51E6F8609d1aC40A1f3ABb7ECe41f83"; // MyTokenA
@@ -30,7 +31,7 @@ async function main() {
 
   console.log(`Sender (${sender}) balance MyTokenA:`, ethers.formatUnits(balanceSenderA, 18));
   console.log(`Receiver (${receiver}) balance MyTokenA:`, ethers.formatUnits(balanceReceiverA, 18));
-  console.log(`Receiver 3 (${receiver}) balance MyTokenA:`, ethers.formatUnits(balanceReceiver3A, 18));
+  console.log(`Receiver 3 (${receiver3}) balance MyTokenA:`, ethers.formatUnits(balanceReceiver3A, 18));
 
   console.log("===========================");
   console.log("MyTokenB");
@@ -39,7 +40,7 @@ async function main() {
   const balanceReceiver3B = await tokenContractB.balanceOf(receiver3); // balance (wei)
   console.log(`Sender (${sender}) balance MyTokenB:`, ethers.formatUnits(balanceSenderB, 18));
   console.log(`Receiver (${receiver}) balance MyTokenB:`, ethers.formatUnits(balanceReceiverB, 18));
-  console.log(`Receiver 3 (${receiver}) balance MyTokenB:`, ethers.formatUnits(balanceReceiver3B, 18));
+  console.log(`Receiver 3 (${receiver3}) balance MyTokenB:`, ethers.formatUnits(balanceReceiver3B, 18));
 
   console.log("===========================");
   const chain = await hre.ethers.provider.getNetwork();

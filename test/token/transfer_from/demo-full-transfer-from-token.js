@@ -1,4 +1,5 @@
 const addresses = require('../../../deployed-address.json');
+const accountAddresses = require('../../../wallet-address.json');
 const { ethers } = require("ethers");
 const fs = require("fs");
 const abi = JSON.parse(fs.readFileSync("./artifacts/contracts/MyTokenA.sol/MyTokenA.json")).abi;
@@ -21,7 +22,7 @@ const tokenAddress = addresses.MyTokenA; // MyTokenA
 const token = new ethers.Contract(tokenAddress, abi, ownerWallet);
 
 // Địa chỉ người nhận (có thể là 1 ví khác, không phải spender)
-const recipientAddress = "0x90421361aAeb310843A30d6e6b841a69335CDA4C";
+const recipientAddress = accountAddresses.ACCOUNT_1_NODE_3;
 
 async function main() {
   const ownerAddress = await ownerWallet.getAddress();

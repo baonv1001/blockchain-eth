@@ -8,6 +8,6 @@ contract MyTokenA is ERC20 { // smart contract chuẩn ERC20
         _mint(msg.sender, 1000000 * 10 ** decimals()); // Mint (tạo) ra 1 triệu token cho người deploy (địa chỉ msg.sender).
         // 10 ** decimals() để xử lý số lẻ token (mặc định là 18 chữ số thập phân như ETH).
 
-        // msg.sender = Sender (0x04fbeC3Ac166Fea2ce157f74962eFe4C8aFf7891)
+        // msg.sender = Sender wallet-address.ACCOUNT_1_NODE_1 (0x04fbeC3Ac166Fea2ce157f74962eFe4C8aFf7891)
     }
 }

@@ -1,5 +1,6 @@
 const { ethers } = require("ethers");
 const addresses = require('../../deployed-address.json');
+const accountAddresses = require('../../wallet-address.json');
 const fs = require("fs");
 require("dotenv").config();
 
@@ -12,7 +13,7 @@ const privateKey = process.env.PRIVATE_KEY;
 const wallet = new ethers.Wallet(privateKey, provider);
 
 // 🟢 Địa chỉ người nhận
-const receiver = "0x444595d3AA12F83Fed8BF7aE7Bc01D2684aD463C";
+const receiver = accountAddresses.ACCOUNT_1_NODE_2;
 
 // 🟢 Địa chỉ token contract
 const tokenAddress = addresses.MyTokenA; // "0xf3aE19F2c51E6F8609d1aC40A1f3ABb7ECe41f83";
